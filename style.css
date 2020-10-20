@@ -1,5 +1,6 @@
 body {
     padding: 0 13px;
+    position: relative;
 }
 
 .logo {
@@ -66,4 +67,71 @@ button {
     font-weight: 700;
     line-height: 12.19px;
     padding: 0;
+}
+
+.rating {
+    padding-left: 1.5rem;
+    background-image: url(./assets/grade-24px.svg);
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.popup-box {
+	width: 100%;
+	height: 100vh;
+	background-color: white;
+	position: absolute; 
+	top: 0;
+    left: 0;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    border: none;
+}
+
+fieldset {
+   border: none;
+}
+
+fieldset:first-of-type {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+form > div {
+    width: 100%;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+.button-search {
+    background-color: #EB5757;
+    color: #F2F2F2;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+    padding: 1rem 2rem;
+    padding-left: 3rem;
+    border-radius: 16px;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    background-image: url(./assets/search-w.svg);
+    background-position: 1rem center;
+    background-repeat: no-repeat;
+    background-size: 20px;
 }

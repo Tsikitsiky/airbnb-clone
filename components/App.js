@@ -1,33 +1,27 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import stays from '../stays.json';
+import Popup from "./popup";
+import Stays from "./stays";
 
-class App extends Component {
-    render() {
+function App() {
+    //set up the popup
+    const [isOpen, setIsOpen] = useState(false);
+    function handleClicks (e) {
+        setIsOpen(!isOpen);
+    }
         const aparts = stays;
         return(
             <>
             <div className='buttons'>
-                <button className='location'>Helsinki, Finland</button>
-                <button className='add-guest'> Add guests</button>
-                <button className='search-icon'></button>
+                <button onClick={handleClicks} className='location'>Helsinki, Finland</button>
+                <button onClick={handleClicks} className='add-guest'> Add guests</button>
+                <button onClick={handleClicks} className='search-icon'></button>
             </div>
+            {isOpen && <Popup handleClicks={handleClicks} />}
             <h2>Stays in finland</h2>
-            {aparts.map(apart => {
-                return(
-                <div key={apart.title} className='card'>
-                    <img className="photo" src={apart.photo} alt={apart.title} />
-                    <div>
-                        <button className='super-host'>Super Host</button>
-                        <p>{apart.type}. {apart.beds} beds</p>
-                        <p>{apart.rating}</p>
-                    </div>
-                    <p>{apart.title}</p>
-                </div>
-                )
-            })}
+            {aparts.map(apart => <Stays  key={apart.title} {...apart} />)}
             </>
         )
-    }
 }
 
 export default App;
