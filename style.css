@@ -21,6 +21,10 @@ body {
     max-width: 500px;
 }
 
+.card > p {
+    margin: 0;
+}
+
 .photo {
     width: 100%;
     border-radius: 24px;
@@ -184,10 +188,84 @@ li button {
     color: #828282;
 }
 
-.guest,
-.city {
+.guest {
     width: 100%;
     height: auto;
     text-align: left;
     padding-block: 0;
+}
+
+select,
+option {
+    border: none;
+}
+
+@media(min-width: 720px) {
+    .card-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 30px;
+        row-gap: 20px;
+    }
+
+    .buttons {
+        position: absolute;
+        top: 0%;
+        left: 70%;
+    }
+
+    .search-icon {
+        padding-right: 2rem;
+        background-image: url(./assets/search.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+    }
+
+    body > header,
+    main {
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+
+    .head {
+        visibility: hidden;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-search {
+        position: relative;
+        top: 0;
+        left: -20%;
+    }
+
+    fieldset:first-of-type {
+        border-bottom: none;
+    }
+
+    .guest {
+        width: auto;
+    }
+
+    .guest-input {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .box {
+        height: 50%;
+    }
 }

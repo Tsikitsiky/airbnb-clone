@@ -102,7 +102,9 @@ function App() {
                 <h2>Stays in Finland</h2>
                 <p>12+ stays</p>
             </div>
-            {aparts.map(apart => <Stays {...apart} key={apart.id} />)}
+            <div className="card-list">
+                {aparts.map(apart => <Stays {...apart} key={apart.id} />)}
+            </div>
             </>
         )
 }
