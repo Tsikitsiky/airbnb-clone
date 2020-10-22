@@ -4,6 +4,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+p {
+    font-size: 14px;
+}
+
 .logo {
     width: 100px;
 }
@@ -11,6 +15,7 @@ body {
 .subheader {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .subheader h2,
@@ -19,7 +24,7 @@ body {
 }
 
 .card {
-    max-width: 500px;
+    max-width: 400px;
     margin-bottom: 16px;
 }
 
@@ -202,7 +207,7 @@ option {
     border: none;
 }
 
-@media(min-width: 850px) {
+@media(min-width: 950px) {
     .card-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
