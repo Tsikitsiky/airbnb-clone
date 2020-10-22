@@ -5,8 +5,8 @@ function Stays(apart) {
         <div className='card'>
             <img className="photo" src={apart.photo} alt={apart.title} />
             <div>
-                <button className='super-host'>Super Host</button>
-                <p>{apart.type}. {apart.beds} beds</p>
+                {apart.superHost? <button className='super-host'>Super Host</button> : '' }
+                <p className="grey-text">{apart.type} {apart.superHost ? `.${apart.beds} beds` : ''} </p>
                 <p className="rating">{apart.rating}</p>
             </div>
             <p>{apart.title}</p>

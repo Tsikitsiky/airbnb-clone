@@ -219,6 +219,10 @@ option {
         font-size: 14px;
     }
 
+    .grey-text {
+        color: #BDBDBD;
+    }
+
     .buttons {
         position: absolute;
         top: 0%;

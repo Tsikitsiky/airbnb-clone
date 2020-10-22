@@ -28538,9 +28538,11 @@ function Stays(apart) {
     className: "photo",
     src: apart.photo,
     alt: apart.title
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }), /*#__PURE__*/_react.default.createElement("div", null, apart.superHost ? /*#__PURE__*/_react.default.createElement("button", {
     className: "super-host"
-  }, "Super Host"), /*#__PURE__*/_react.default.createElement("p", null, apart.type, ". ", apart.beds, " beds"), /*#__PURE__*/_react.default.createElement("p", {
+  }, "Super Host") : '', /*#__PURE__*/_react.default.createElement("p", {
+    className: "grey-text"
+  }, apart.type, " ", apart.superHost ? `.${apart.beds} beds` : '', " "), /*#__PURE__*/_react.default.createElement("p", {
     className: "rating"
   }, apart.rating)), /*#__PURE__*/_react.default.createElement("p", null, apart.title));
 }
