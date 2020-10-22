@@ -1,6 +1,7 @@
 body {
     padding: 0 13px;
     position: relative;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .logo {
@@ -224,7 +225,7 @@ option {
 
     body > header,
     main {
-        max-width: 1040px;
+        max-width: 1140px;
         margin: 0 auto;
     }
 
