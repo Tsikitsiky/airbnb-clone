@@ -28662,22 +28662,19 @@ function App() {
     setIsCity(!isCity);
   }
 
-  const [count, setCount] = (0, _react.useState)(0);
   const [countChildren, setCountChildren] = (0, _react.useState)(0);
   const [countAdult, setCountAdult] = (0, _react.useState)(0);
+  const count = countChildren + countAdult;
 
   function incrementGuest(e) {
     if (e.target.matches('.adult')) {
       setCountAdult(countAdult + 1);
-      setCount(countChildren + countAdult);
     }
 
     if (e.target.matches('.children')) {
       setCountChildren(countChildren + 1);
-      setCount(countChildren + countAdult);
     }
 
-    setGuests(count);
     aparts = aparts.filter(apart => apart.maxGuests >= count);
     setAparts(aparts);
     console.log(aparts);
@@ -28688,7 +28685,6 @@ function App() {
       if (count !== 0) {
         if (countAdult !== 0) {
           setCountAdult(countAdult - 1);
-          setCount(countChildren + countAdult);
         }
       }
     }
@@ -28697,7 +28693,6 @@ function App() {
       if (count !== 0) {
         if (countChildren !== 0) {
           setCountChildren(countChildren - 1);
-          setCount(countChildren + countAdult);
         }
       }
     }
