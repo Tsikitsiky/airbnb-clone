@@ -243,7 +243,13 @@ body > header,
         margin: 0 auto;
     }
 
+    p {
+        font-size: 14px;
+    }
 
+    .grey-text {
+        color: #BDBDBD;
+    }
 
 @media(min-width: 950px) {
     .card-list {
@@ -251,14 +257,6 @@ body > header,
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 30px;
         row-gap: 20px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    .grey-text {
-        color: #BDBDBD;
     }
 
     .buttons {
