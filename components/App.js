@@ -25,15 +25,22 @@ function App() {
             aparts[i].id = i;
         }
         function handleChange (e) {
-            if(e.target.matches('.location')) {
-                //setIsCity(!isCity);
-                setCity(e.target.value);
-                aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-                setAparts(aparts);
+            if(e.target.matches('.city')) {
+                setIsCity(!isCity);
+                // setCity(e.target.value);
+                // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+                // setAparts(aparts);
             }
             if(e.target.matches('.guest')) {
                 setIsGuestShown(!isGuestShown);
             }
+        }
+
+        function handleChangeCity(e) {
+                setCity(e.target.value);
+                aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+                setAparts(aparts);
+                setIsCity(!isCity);
         }
 
         const [count, setCount] = useState(0);
@@ -44,12 +51,12 @@ function App() {
             
             if(e.target.matches('.adult')) {
                 setCountAdult(countAdult + 1)
+                setCount(countChildren + countAdult);
             }
             if(e.target.matches('.children')) {
                 setCountChildren(countChildren + 1)
+                setCount(countChildren + countAdult);
             }
-            setCount(countChildren + countAdult);
-
             setGuests(count);
             aparts = aparts.filter(apart => apart.maxGuests >= count)
             setAparts(aparts)
@@ -58,12 +65,22 @@ function App() {
         }
         function decrementGuest(e) {
             if(e.target.matches('.adult')) {
-                setCountAdult(countAdult - 1)
+                if(count!== 0 ){
+                    if(countAdult!== 0) {
+                        setCountAdult(countAdult - 1)
+                    setCount(countChildren + countAdult )
+                    }
+                }
             }
+
             if(e.target.matches('.children')) {
-                setCountChildren(countChildren - 1)
+                if(count!== 0) {
+                    if(countChildren!== 0) {
+                        setCountChildren(countChildren - 1)
+                        setCount(countChildren + countAdult )
+                    }
+                }
             }
-            setCount(countChildren + countAdult )
 
             setGuests(count)
             aparts = aparts.filter(apart => apart.maxGuests >= count )
@@ -79,8 +96,11 @@ function App() {
         return(
             <>
             <div className='buttons'>
-                <button onClick={handleClicks} className='location'>Helsinki, Finland</button>
-                <button onClick={handleClicks} className='add-guest'> Add guests</button>
+                <button onClick={handleClicks} className='location'>
+                    {city? `${city}, Finland` : 'Helsinki, Finland'}</button>
+                <button onClick={handleClicks} className='add-guest'>
+                    {count !== 0? `${count} guests` : "Add guests"}
+                </button>
                 <button onClick={handleClicks} className='search-icon'></button>
             </div>
             {isOpen && <Popup 
@@ -96,11 +116,12 @@ function App() {
             guests={guests}
             isGuestShown={isGuestShown}
             isCity={isCity}
-            handleSubmit={handleSubmit} />}
+            handleSubmit={handleSubmit}
+            handleChangeCity={handleChangeCity} />}
             
             <div className="subheader">
                 <h2>Stays in Finland</h2>
-                <p>12+ stays</p>
+                <p>{aparts.length} stays</p>
             </div>
             <div className="card-list">
                 {aparts.map(apart => <Stays {...apart} key={apart.id} />)}

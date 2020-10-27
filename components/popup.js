@@ -1,41 +1,69 @@
 import React from "react";
 import Guest from "./guest";
+import City from './city'
  
-const Popup = props => {
-  console.log(props.guests)
+const Popup = ({
+  handleChange,
+   handleChangeCity, 
+   handleClicks,
+   guests,
+   city,
+   handleSubmit,
+   count,
+   isCity,
+   isGuestShown,
+   incrementGuest,
+   decrementGuest,
+   countAdult,
+   countChildren
+  }) => {
+  console.log(city)
   return (
     <div className="popup-box">
       <div className="box">
       <div className="head">
           <p>Edit your search</p>
-          <button onClick={props.handleClicks}>x</button>
+          <button onClick={handleClicks}>x</button>
       </div>
-        <form  onSubmit={props.handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <div>
                 <fieldset>
                     <label>Location</label><br />
-                    {/* <button type="button" value={props.city} className="city" onClick={props.handleChange}>{props.city}</button> */}
-                    <select name="location" className="location" value={props.city} onChange={props.handleChange}>
+                    <input 
+                      type="text" 
+                      //value={city} 
+                      className="city" 
+                      placeholder={city? `${city}, Finland` : 'Helsinki, Finland'}
+                      onClick={handleChange}
+                      />
+                        
+                    
+                    {/* <select name="location" className="location" value={props.city} onChange={props.handleChange}>
                       <option className="option" value="Helsinki">Helsinki, Finland</option>
                       <option className="option" value="Turku">Turku, Finland</option>
                       <option className="option" value="Oulu">Oulu, Finland</option>
                       <option className="option" value="Vaasa">Vaasa, Finland</option>
-                    </select>
+                    </select> */}
                 </fieldset>
                 <fieldset>
                     <label>Guest</label><br />
-                    <button type="button" value={props.guests} className="guest" onClick={props.handleChange}>{props.count}</button>
+                    <button 
+                      type="button" 
+                      value={guests} 
+                      className="guest" 
+                      onClick={handleChange}>
+                      {count} guests
+                    </button>
                 </fieldset>
             </div>
             <button className="button-search">Search</button>
         </form>
-        {/* {props.isCity && <ul className="city-input">
-          <li><input type="checkbox" Helsinki, Finland</li>
-          <li><input type="checkbox" Turku, Finland</li>
-          <li><input type="checkbox" Oulu, Finland</li>
-          <li><input type="checkbox" Vaasa, Finland</li>
-          </ul>} */}
-        {props.isGuestShown && <Guest incrementGuest={props.incrementGuest} decrementGuest={props.decrementGuest} countAdult={props.countAdult} countChildren={props.countChildren} /> }
+        {isCity && <City handleChangeCity={handleChangeCity} />}
+        {isGuestShown && <Guest 
+        incrementGuest={incrementGuest} 
+        decrementGuest={decrementGuest} 
+        countAdult={countAdult} 
+        countChildren={countChildren} /> }
         
       </div>
     </div>

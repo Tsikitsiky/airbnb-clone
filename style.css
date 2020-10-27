@@ -54,19 +54,20 @@ button {
 }
 
 .location {
-    color: #000000;
+    color: #BDBDBD;
     border-right: 1px solid #BDBDBD;
 }
 
 .add-guest {
     color: #BDBDBD;
     border-right: 1px solid #BDBDBD;
+    width: 106px;
 }
 
 .search-icon {
     padding-right: 2rem;
     background-image: url(./assets/search.svg);
-    background-position: 100% 10%;
+    background-position: 80% 10%;
     background-repeat: no-repeat;
     background-size: 20px;
 }
@@ -74,7 +75,15 @@ button {
 .buttons {
     border-radius: 16px;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 0 auto;
 }
+
+.buttons button:hover {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 
 .super-host {
     text-transform: uppercase;
@@ -206,6 +215,35 @@ select,
 option {
     border: none;
 }
+
+.checkbox {
+    padding-left: 1rem;
+    background-image: url(./assets/location_on-24px.svg);
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+}
+
+.city-input {
+    padding: 0;
+}
+
+.city-input li {
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+.checkbox input {
+    visibility: hidden;
+}
+
+body > header,
+    main {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+
 
 @media(min-width: 950px) {
     .card-list {

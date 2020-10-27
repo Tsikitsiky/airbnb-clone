@@ -28459,6 +28459,47 @@ function Guest(props) {
 
 var _default = Guest;
 exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/city.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = City;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function City(props) {
+  return /*#__PURE__*/_react.default.createElement("ul", {
+    className: "city-input"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("label", {
+    className: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: "Helsinki",
+    onChange: props.handleChangeCity
+  }), "Helsinki, Finland")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("label", {
+    className: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: "Turku",
+    onChange: props.handleChangeCity
+  }), "Turku, Finland")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("label", {
+    className: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: "Oulu",
+    onChange: props.handleChangeCity
+  }), "Oulu, Finland")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("label", {
+    className: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: "Vaasa",
+    onChange: props.handleChangeCity
+  }), "Vaasa, Finland")));
+}
 },{"react":"node_modules/react/index.js"}],"components/popup.js":[function(require,module,exports) {
 "use strict";
 
@@ -28471,10 +28512,26 @@ var _react = _interopRequireDefault(require("react"));
 
 var _guest = _interopRequireDefault(require("./guest"));
 
+var _city = _interopRequireDefault(require("./city"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Popup = props => {
-  console.log(props.guests);
+const Popup = ({
+  handleChange,
+  handleChangeCity,
+  handleClicks,
+  guests,
+  city,
+  handleSubmit,
+  count,
+  isCity,
+  isGuestShown,
+  incrementGuest,
+  decrementGuest,
+  countAdult,
+  countChildren
+}) => {
+  console.log(city);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "popup-box"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28482,44 +28539,35 @@ const Popup = props => {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "head"
   }, /*#__PURE__*/_react.default.createElement("p", null, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: props.handleClicks
+    onClick: handleClicks
   }, "x")), /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: props.handleSubmit
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("select", {
-    name: "location",
-    className: "location",
-    value: props.city,
-    onChange: props.handleChange
-  }, /*#__PURE__*/_react.default.createElement("option", {
-    className: "option",
-    value: "Helsinki"
-  }, "Helsinki, Finland"), /*#__PURE__*/_react.default.createElement("option", {
-    className: "option",
-    value: "Turku"
-  }, "Turku, Finland"), /*#__PURE__*/_react.default.createElement("option", {
-    className: "option",
-    value: "Oulu"
-  }, "Oulu, Finland"), /*#__PURE__*/_react.default.createElement("option", {
-    className: "option",
-    value: "Vaasa"
-  }, "Vaasa, Finland"))), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Guest"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text" //value={city} 
+    ,
+    className: "city",
+    placeholder: city ? `${city}, Finland` : 'Helsinki, Finland',
+    onClick: handleChange
+  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Guest"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    value: props.guests,
+    value: guests,
     className: "guest",
-    onClick: props.handleChange
-  }, props.count))), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: handleChange
+  }, count, " guests"))), /*#__PURE__*/_react.default.createElement("button", {
     className: "button-search"
-  }, "Search")), props.isGuestShown && /*#__PURE__*/_react.default.createElement(_guest.default, {
-    incrementGuest: props.incrementGuest,
-    decrementGuest: props.decrementGuest,
-    countAdult: props.countAdult,
-    countChildren: props.countChildren
+  }, "Search")), isCity && /*#__PURE__*/_react.default.createElement(_city.default, {
+    handleChangeCity: handleChangeCity
+  }), isGuestShown && /*#__PURE__*/_react.default.createElement(_guest.default, {
+    incrementGuest: incrementGuest,
+    decrementGuest: decrementGuest,
+    countAdult: countAdult,
+    countChildren: countChildren
   })));
 };
 
 var _default = Popup;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./guest":"components/guest.js"}],"components/stays.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./guest":"components/guest.js","./city":"components/city.js"}],"components/stays.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28596,16 +28644,22 @@ function App() {
   }
 
   function handleChange(e) {
-    if (e.target.matches('.location')) {
-      //setIsCity(!isCity);
-      setCity(e.target.value);
-      aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-      setAparts(aparts);
+    if (e.target.matches('.city')) {
+      setIsCity(!isCity); // setCity(e.target.value);
+      // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+      // setAparts(aparts);
     }
 
     if (e.target.matches('.guest')) {
       setIsGuestShown(!isGuestShown);
     }
+  }
+
+  function handleChangeCity(e) {
+    setCity(e.target.value);
+    aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+    setAparts(aparts);
+    setIsCity(!isCity);
   }
 
   const [count, setCount] = (0, _react.useState)(0);
@@ -28615,13 +28669,14 @@ function App() {
   function incrementGuest(e) {
     if (e.target.matches('.adult')) {
       setCountAdult(countAdult + 1);
+      setCount(countChildren + countAdult);
     }
 
     if (e.target.matches('.children')) {
       setCountChildren(countChildren + 1);
+      setCount(countChildren + countAdult);
     }
 
-    setCount(countChildren + countAdult);
     setGuests(count);
     aparts = aparts.filter(apart => apart.maxGuests >= count);
     setAparts(aparts);
@@ -28630,14 +28685,23 @@ function App() {
 
   function decrementGuest(e) {
     if (e.target.matches('.adult')) {
-      setCountAdult(countAdult - 1);
+      if (count !== 0) {
+        if (countAdult !== 0) {
+          setCountAdult(countAdult - 1);
+          setCount(countChildren + countAdult);
+        }
+      }
     }
 
     if (e.target.matches('.children')) {
-      setCountChildren(countChildren - 1);
+      if (count !== 0) {
+        if (countChildren !== 0) {
+          setCountChildren(countChildren - 1);
+          setCount(countChildren + countAdult);
+        }
+      }
     }
 
-    setCount(countChildren + countAdult);
     setGuests(count);
     aparts = aparts.filter(apart => apart.maxGuests >= count);
     setAparts(aparts);
@@ -28654,10 +28718,10 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClicks,
     className: "location"
-  }, "Helsinki, Finland"), /*#__PURE__*/_react.default.createElement("button", {
+  }, city ? `${city}, Finland` : 'Helsinki, Finland'), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClicks,
     className: "add-guest"
-  }, " Add guests"), /*#__PURE__*/_react.default.createElement("button", {
+  }, count !== 0 ? `${count} guests` : "Add guests"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClicks,
     className: "search-icon"
   })), isOpen && /*#__PURE__*/_react.default.createElement(_popup.default, {
@@ -28673,10 +28737,11 @@ function App() {
     guests: guests,
     isGuestShown: isGuestShown,
     isCity: isCity,
-    handleSubmit: handleSubmit
+    handleSubmit: handleSubmit,
+    handleChangeCity: handleChangeCity
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "subheader"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", null, "12+ stays")), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", null, aparts.length, " stays")), /*#__PURE__*/_react.default.createElement("div", {
     className: "card-list"
   }, aparts.map(apart => /*#__PURE__*/_react.default.createElement(_stays2.default, _extends({}, apart, {
     key: apart.id
@@ -28725,7 +28790,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
