@@ -31,9 +31,10 @@ const Popup = ({
                     <label>Location</label><br />
                     <input 
                       type="text" 
-                      //value={city} 
+                      value={city} 
                       className="city" 
                       placeholder={city? `${city}, Finland` : 'Helsinki, Finland'}
+                      onChange={handleChangeCity}
                       onClick={handleChange}
                       />
                         

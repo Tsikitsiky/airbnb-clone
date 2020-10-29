@@ -28498,7 +28498,13 @@ function City(props) {
     type: "checkbox",
     value: "Vaasa",
     onChange: props.handleChangeCity
-  }), "Vaasa, Finland")));
+  }), "Vaasa, Finland")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("label", {
+    className: "checkbox"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: "",
+    onChange: props.handleChangeCity
+  }), "All")));
 }
 },{"react":"node_modules/react/index.js"}],"components/popup.js":[function(require,module,exports) {
 "use strict";
@@ -28543,10 +28549,11 @@ const Popup = ({
   }, "x")), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text" //value={city} 
-    ,
+    type: "text",
+    value: city,
     className: "city",
     placeholder: city ? `${city}, Finland` : 'Helsinki, Finland',
+    onChange: handleChangeCity,
     onClick: handleChange
   })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Guest"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
@@ -28635,7 +28642,7 @@ function App() {
   const [isCity, setIsCity] = (0, _react.useState)(false);
 
   function handleClicks(e) {
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen); //setIsCity(!isCity)
   } //add id to each apart
 
 
@@ -28785,7 +28792,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50332" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65362" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

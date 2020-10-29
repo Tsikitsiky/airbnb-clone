@@ -16,8 +16,9 @@ function App() {
     //city list
     const [isCity, setIsCity] = useState(false)
 
-    function handleClicks (e) {
+    function handleClicks (e) { 
         setIsOpen(!isOpen);
+        //setIsCity(!isCity)
     }
         
         //add id to each apart
