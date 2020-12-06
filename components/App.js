@@ -28,23 +28,31 @@ function App() {
         function handleChange (e) {
             if(e.target.matches('.city')) {
                 setIsCity(!isCity);
+                setIsGuestShown(false)
                 // setCity(e.target.value);
                 // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
                 // setAparts(aparts);
             }
             if(e.target.matches('.guest')) {
                 setIsGuestShown(!isGuestShown);
+                setIsCity(false)
             }
         }
 
+        //handle city input
         function handleChangeCity(e) {
                 setCity(e.target.value);
-                aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-                setAparts(aparts);
+                if(e.target.value !== "") {
+                    aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+                    setAparts(aparts);
+                } else {
+                    setAparts(stays)
+                }
+                
                 setIsCity(!isCity);
         }
 
-        
+        //handle the guest input
         const [countChildren, setCountChildren] = useState(0);
         const [countAdult, setCountAdult] = useState(0);
         const count = countChildren + countAdult;
@@ -112,6 +120,7 @@ function App() {
             countAdult={countAdult}
             countChildren={countChildren}
             guests={guests}
+            setAparts= {setAparts}
             isGuestShown={isGuestShown}
             isCity={isCity}
             handleSubmit={handleSubmit}

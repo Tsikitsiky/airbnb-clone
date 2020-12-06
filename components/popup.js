@@ -1,22 +1,8 @@
 import React from "react";
 import Guest from "./guest";
-import City from './city'
+import City from './city';
  
-const Popup = ({
-  handleChange,
-   handleChangeCity, 
-   handleClicks,
-   guests,
-   city,
-   handleSubmit,
-   count,
-   isCity,
-   isGuestShown,
-   incrementGuest,
-   decrementGuest,
-   countAdult,
-   countChildren
-  }) => {
+const Popup = ({handleChange, handleChangeCity, handleClicks, guests, city, handleSubmit, count, isCity, isGuestShown, incrementGuest, decrementGuest, countAdult, countChildren, setAparts }) => {
   console.log(city)
   return (
     <div className="popup-box">
@@ -59,7 +45,7 @@ const Popup = ({
             </div>
             <button className="button-search">Search</button>
         </form>
-        {isCity && <City handleChangeCity={handleChangeCity} />}
+        {isCity && <City handleChangeCity={handleChangeCity} setAparts={setAparts} />}
         {isGuestShown && <Guest 
         incrementGuest={incrementGuest} 
         decrementGuest={decrementGuest} 

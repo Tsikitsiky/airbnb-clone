@@ -1,4 +1,5 @@
 import React from 'react';
+import stays from '../stays.json'
 
 export default function City(props) {
     return(<ul className="city-input">
@@ -7,5 +8,4 @@ export default function City(props) {
     <li><label className='checkbox'><input type="checkbox" value="Oulu" onChange={props.handleChangeCity} />Oulu, Finland</label></li>
     <li><label className='checkbox'><input type="checkbox" value="Vaasa" onChange={props.handleChangeCity} />Vaasa, Finland</label></li>
     <li><label className='checkbox'><input type="checkbox" value="" onChange={props.handleChangeCity} />All</label></li>
-    </ul>) 
-}
+    </ul>) }

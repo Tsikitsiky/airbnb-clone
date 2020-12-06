@@ -28469,6 +28469,8 @@ exports.default = City;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _stays = _interopRequireDefault(require("../stays.json"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function City(props) {
@@ -28506,7 +28508,7 @@ function City(props) {
     onChange: props.handleChangeCity
   }), "All")));
 }
-},{"react":"node_modules/react/index.js"}],"components/popup.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../stays.json":"stays.json"}],"components/popup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28535,7 +28537,8 @@ const Popup = ({
   incrementGuest,
   decrementGuest,
   countAdult,
-  countChildren
+  countChildren,
+  setAparts
 }) => {
   console.log(city);
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28563,7 +28566,8 @@ const Popup = ({
   }, count, " guests"))), /*#__PURE__*/_react.default.createElement("button", {
     className: "button-search"
   }, "Search")), isCity && /*#__PURE__*/_react.default.createElement(_city.default, {
-    handleChangeCity: handleChangeCity
+    handleChangeCity: handleChangeCity,
+    setAparts: setAparts
   }), isGuestShown && /*#__PURE__*/_react.default.createElement(_guest.default, {
     incrementGuest: incrementGuest,
     decrementGuest: decrementGuest,
@@ -28652,22 +28656,32 @@ function App() {
 
   function handleChange(e) {
     if (e.target.matches('.city')) {
-      setIsCity(!isCity); // setCity(e.target.value);
+      setIsCity(!isCity);
+      setIsGuestShown(false); // setCity(e.target.value);
       // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
       // setAparts(aparts);
     }
 
     if (e.target.matches('.guest')) {
       setIsGuestShown(!isGuestShown);
+      setIsCity(false);
     }
-  }
+  } //handle city input
+
 
   function handleChangeCity(e) {
     setCity(e.target.value);
-    aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-    setAparts(aparts);
+
+    if (e.target.value !== "") {
+      aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
+      setAparts(aparts);
+    } else {
+      setAparts(_stays.default);
+    }
+
     setIsCity(!isCity);
-  }
+  } //handle the guest input
+
 
   const [countChildren, setCountChildren] = (0, _react.useState)(0);
   const [countAdult, setCountAdult] = (0, _react.useState)(0);
@@ -28737,6 +28751,7 @@ function App() {
     countAdult: countAdult,
     countChildren: countChildren,
     guests: guests,
+    setAparts: setAparts,
     isGuestShown: isGuestShown,
     isCity: isCity,
     handleSubmit: handleSubmit,
@@ -28792,7 +28807,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65362" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49777" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
