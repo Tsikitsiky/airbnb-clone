@@ -11,6 +11,15 @@ In this project I created a small version of Airbnb - Windbnb with a given data.
 ### Design 
 You can see the design on [https://www.figma.com/file/KGNH8dbclXT1vzXLyPrBeu](https://www.figma.com/file/KGNH8dbclXT1vzXLyPrBeu)  
 
-### Repository
-To use this code you need to install `React` and `RactDOM`
-Repo: [https://github.com/Tsikitsiky/airbnb-clone](https://github.com/Tsikitsiky/airbnb-clone)
+### How to use
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/Tsikitsiky/airbnb-clone
+
+You need to install `React` and `RactDOM`.
+```
+
+### Live App
+[https://loving-albattani-a16796.netlify.app/](https://loving-albattani-a16796.netlify.app/)
