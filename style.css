@@ -25,7 +25,13 @@ button {
 
 .subheader h2,
 .subheader p {
-    margin: 1rem 0;
+    margin: 32px 0;
+}
+
+.subheader h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
 }
 
 .card {
@@ -97,9 +103,9 @@ button {
     box-sizing: border-box;
     width: 89px;
     height: 25px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
-    line-height: 12.19px;
+    line-height: 14.19px;
     padding: 0;
 }
 
@@ -109,6 +115,9 @@ button {
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .popup-box {
@@ -255,11 +264,22 @@ body > header,
     }
 
     p {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 19px;
+    }
+
+    .subheader p {
+        font-weight: 500;
         font-size: 14px;
+        line-height: 17px;
     }
 
     .grey-text {
         color: #BDBDBD;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
     }
 
 @media(min-width: 950px) {

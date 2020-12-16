@@ -28602,7 +28602,7 @@ function Stays(apart) {
     className: "super-host"
   }, "Super Host") : '', /*#__PURE__*/_react.default.createElement("p", {
     className: "grey-text"
-  }, apart.type, " .", apart.beds && `${apart.beds} beds`, " "), /*#__PURE__*/_react.default.createElement("p", {
+  }, apart.type, " ", apart.beds && ` . ${apart.beds} beds`, " "), /*#__PURE__*/_react.default.createElement("p", {
     className: "rating"
   }, apart.rating)), /*#__PURE__*/_react.default.createElement("p", null, apart.title));
 }
