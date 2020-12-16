@@ -11,8 +11,7 @@ const Popup = ({handleChange, handleChangeCity, handleClicks, guests, city, hand
           <p>Edit your search</p>
           <button onClick={handleClicks}>x</button>
       </div>
-        <form  onSubmit={handleSubmit}>
-            <div>
+        <form className="popup-form" onSubmit={handleSubmit}>
                 <fieldset>
                     <label>Location</label><br />
                     <input 
@@ -23,14 +22,6 @@ const Popup = ({handleChange, handleChangeCity, handleClicks, guests, city, hand
                       onChange={handleChangeCity}
                       onClick={handleChange}
                       />
-                        
-                    
-                    {/* <select name="location" className="location" value={props.city} onChange={props.handleChange}>
-                      <option className="option" value="Helsinki">Helsinki, Finland</option>
-                      <option className="option" value="Turku">Turku, Finland</option>
-                      <option className="option" value="Oulu">Oulu, Finland</option>
-                      <option className="option" value="Vaasa">Vaasa, Finland</option>
-                    </select> */}
                 </fieldset>
                 <fieldset>
                     <label>Guest</label><br />
@@ -42,8 +33,7 @@ const Popup = ({handleChange, handleChangeCity, handleClicks, guests, city, hand
                       {count} guests
                     </button>
                 </fieldset>
-            </div>
-            <button className="button-search">Search</button>
+            <div><button className="button-search">Search</button></div>
         </form>
         {isCity && <City handleChangeCity={handleChangeCity} setAparts={setAparts} />}
         {isGuestShown && <Guest 

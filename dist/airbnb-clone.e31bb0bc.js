@@ -28550,8 +28550,9 @@ const Popup = ({
   }, /*#__PURE__*/_react.default.createElement("p", null, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClicks
   }, "x")), /*#__PURE__*/_react.default.createElement("form", {
+    className: "popup-form",
     onSubmit: handleSubmit
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     value: city,
     className: "city",
@@ -28563,9 +28564,9 @@ const Popup = ({
     value: guests,
     className: "guest",
     onClick: handleChange
-  }, count, " guests"))), /*#__PURE__*/_react.default.createElement("button", {
+  }, count, " guests")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     className: "button-search"
-  }, "Search")), isCity && /*#__PURE__*/_react.default.createElement(_city.default, {
+  }, "Search"))), isCity && /*#__PURE__*/_react.default.createElement(_city.default, {
     handleChangeCity: handleChangeCity,
     setAparts: setAparts
   }), isGuestShown && /*#__PURE__*/_react.default.createElement(_guest.default, {
@@ -28643,10 +28644,12 @@ function App() {
 
   const [isGuestShown, setIsGuestShown] = (0, _react.useState)(false); //city list
 
-  const [isCity, setIsCity] = (0, _react.useState)(false);
+  const [isCity, setIsCity] = (0, _react.useState)(true);
 
   function handleClicks(e) {
-    setIsOpen(!isOpen); //setIsCity(!isCity)
+    setIsOpen(!isOpen);
+    setIsCity(true);
+    setIsGuestShown(false);
   } //add id to each apart
 
 
@@ -28656,10 +28659,8 @@ function App() {
 
   function handleChange(e) {
     if (e.target.matches('.city')) {
-      setIsCity(!isCity);
-      setIsGuestShown(false); // setCity(e.target.value);
-      // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-      // setAparts(aparts);
+      setIsCity(true);
+      setIsGuestShown(false);
     }
 
     if (e.target.matches('.guest')) {
@@ -28671,14 +28672,6 @@ function App() {
 
   function handleChangeCity(e) {
     setCity(e.target.value);
-
-    if (e.target.value !== "") {
-      aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-      setAparts(aparts);
-    } else {
-      setAparts(_stays.default);
-    }
-
     setIsCity(!isCity);
   } //handle the guest input
 
@@ -28694,10 +28687,10 @@ function App() {
 
     if (e.target.matches('.children')) {
       setCountChildren(countChildren + 1);
-    }
+    } // const newAparts = aparts.filter(apart => apart.maxGuests >= count)
+    // setAparts(newAparts)
 
-    aparts = aparts.filter(apart => apart.maxGuests >= count);
-    setAparts(aparts);
+
     console.log(aparts);
   }
 
@@ -28718,14 +28711,19 @@ function App() {
       }
     }
 
-    setGuests(count);
-    aparts = aparts.filter(apart => apart.maxGuests >= count);
-    setAparts(aparts);
+    setGuests(count); //    const newAparts = aparts.filter(apart => apart.maxGuests >= count )
+    // setAparts(newAparts)
+
     console.log(aparts);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const newAparts = _stays.default.filter(apart => apart.city.toLocaleLowerCase().includes(city.toLowerCase()));
+
+    const newGuest = newAparts.filter(apart => apart.maxGuests >= count);
+    setAparts(newGuest);
     setIsOpen(!isOpen);
   }
 
@@ -28807,7 +28805,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59227" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59175" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

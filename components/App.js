@@ -14,11 +14,12 @@ function App() {
     //icrement and decrement popup
     const [isGuestShown, setIsGuestShown] = useState(false);
     //city list
-    const [isCity, setIsCity] = useState(false)
+    const [isCity, setIsCity] = useState(true)
 
     function handleClicks (e) { 
         setIsOpen(!isOpen);
-        //setIsCity(!isCity)
+        setIsCity(true);
+        setIsGuestShown(false)
     }
         
         //add id to each apart
@@ -27,11 +28,8 @@ function App() {
         }
         function handleChange (e) {
             if(e.target.matches('.city')) {
-                setIsCity(!isCity);
+                setIsCity(true);
                 setIsGuestShown(false)
-                // setCity(e.target.value);
-                // aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-                // setAparts(aparts);
             }
             if(e.target.matches('.guest')) {
                 setIsGuestShown(!isGuestShown);
@@ -42,13 +40,6 @@ function App() {
         //handle city input
         function handleChangeCity(e) {
                 setCity(e.target.value);
-                if(e.target.value !== "") {
-                    aparts = aparts.filter(apart => apart.city.toLocaleLowerCase().includes(e.target.value.toLowerCase()));
-                    setAparts(aparts);
-                } else {
-                    setAparts(stays)
-                }
-                
                 setIsCity(!isCity);
         }
 
@@ -58,7 +49,6 @@ function App() {
         const count = countChildren + countAdult;
 
         function incrementGuest(e) {
-            
             if(e.target.matches('.adult')) {
                 setCountAdult(countAdult + 1)
             }
@@ -66,8 +56,8 @@ function App() {
                 setCountChildren(countChildren + 1)
             }
 
-            aparts = aparts.filter(apart => apart.maxGuests >= count)
-            setAparts(aparts)
+            // const newAparts = aparts.filter(apart => apart.maxGuests >= count)
+            // setAparts(newAparts)
             console.log(aparts)
             
         }
@@ -89,13 +79,16 @@ function App() {
             }
 
             setGuests(count)
-            aparts = aparts.filter(apart => apart.maxGuests >= count )
-            setAparts(aparts)
+        //    const newAparts = aparts.filter(apart => apart.maxGuests >= count )
+            // setAparts(newAparts)
             console.log(aparts)
         }
 
         function handleSubmit(e) {
             e.preventDefault();
+            const newAparts = stays.filter(apart => apart.city.toLocaleLowerCase().includes(city.toLowerCase()));
+            const newGuest = newAparts.filter(apart => apart.maxGuests >= count )
+            setAparts(newGuest);
             setIsOpen(!isOpen)
         }
         
